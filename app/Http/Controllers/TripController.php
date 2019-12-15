@@ -18,9 +18,7 @@ class TripController extends Controller
 
     public function  index(){
         //viajes disponibles para viajar,(no muestra los viajes generados por el usuario autenticado)
-        $viajes=Trip::where('estado','=',Trip::PROCESO)->where('user_id','!=',auth()->user()->id)->get();
-        $tipo_viaje = 'chofer';
-        //return view('trip.misviajes',['viajes'=>$viajes]);
+        $viajes=Trip::where('user_id','==',auth()->user()->id)->get();
         return view('misviajes',['viajes'=>$viajes]);
    
     }
@@ -28,7 +26,6 @@ class TripController extends Controller
         return view('trip.create');
     }
     public function store(Request $request){
-        // $hora = strtotime($request->hora);
          $trip=Trip::create([
             'user_id'=>auth()->user()->id,
             'fecha'=>$request->fecha,
@@ -78,7 +75,7 @@ class TripController extends Controller
         ->update(
             ['estado' => 'finalizado']
         );
-          return redirect('/'); 
+        return view('trip.misviajes',['viajes'=>$trip,'tipo_viaje'=>'chofer']); 
     }
 
 

@@ -28,7 +28,7 @@ Route::get('buscar','TripController@buscar')->name('buscar')->middleware('auth')
 Route::get('ad/anuncio','AdController@anuncio')->name('trip.anuncio');
 
 
-Route::get('/{id}','TripController@finalizar')->name('trip.finalizar')->middleware('auth');
+//Route::get('/misviajes/{id}','TripController@finalizar')->name('trip.finalizar')->middleware('auth');
 
 //peticiones
 Route::post('/peticion/store','RequestController@store')->name('peticion.store')->middleware('auth');

@@ -1,26 +1,8 @@
 @extends('theme.layout.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-54 offset-4">
-                <div clas="form-group">
-                    <form action="#" method="get">
-                        @csrf
-                        <label>Elige opción</label>
-                        <select name="tipo_viaje" class="form-control">
-                            <option value="pasajero">solicitados</option>
-                            <option value="chofer" @if($tipo_viaje=='chofer')selected @endif>Creados</option>
-                        </select>
-                        <br>
-                        <button class="btn btn-primary">Filtrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-        @if($tipo_viaje=='pasajero')
+
+@if($tipo_viaje=='pasajero')
                 @forelse($viajes as $viaje)
                         <div class="col-md-4">
                             <div class="card">
@@ -81,7 +63,7 @@
 
             @endforelse
             @else
-            @if($tipo_viaje=='chofer')
+        
                 @forelse($viajes as $viaje)
                         <div class="col-md-4">
                         <br>
@@ -107,12 +89,10 @@
                                     <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
-                                                @forelse($viaje->travelers as $viajante)
                                                         <div class="col-md-3">
                                                             <img src="http://127.0.0.1:8000/theme/img/avatar-6.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow align-content-end">
                                                         </div>
-                                                   @empty
-                                                   @endforelse
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -154,8 +134,7 @@
                     <div class="alert alert-warning" role="alert">
                         No hay viajes disponibles
                     </div>
-                    @endif
                 @endforelse
             @endif
 
-@endsection
+ @endsection
