@@ -64,5 +64,16 @@ class Trip extends Model
         return $soyViajante;
 
     }
+    public function hizoChecking(Request $request){
+        $traveler=Traveler::where('trip_id','=',$this->$request->id)
+        ->where('user_id','=',auth()->user()->id)
+        ->where('me_subi','=','1')
+        ->get();
+
+        if($traveler!=null){
+            $hizo=true;
+        }
+        return $hizo;
+    }
     
 }

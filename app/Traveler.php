@@ -56,4 +56,5 @@ class Traveler extends Model
         $pasajeros=Traveler::where('trip_id',$trip->id);
         return $pasajeros;  
     }
+
 }

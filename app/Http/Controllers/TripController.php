@@ -78,13 +78,11 @@ class TripController extends Controller
     }
     
     public function finaliza($id){
-        //Trip::where('id','=',$request->id)->update(['estado' => 'finalizado']);
-        
         $request=\App\Trip::findOrFail($id);
         $request->estado='finalizado';
         $request->save();
         
-        return back()->with("mensaje", 'Se envío correctamente el mensaje');
+        return back()->with("mensaje", 'Se Finalizo correctamente el viaje');
     } 
 
 

@@ -50,4 +50,6 @@ Route::get('votar/{id}','ScoreController@show')->name('votar')->middleware('auth
 //ranking
 Route::get('ranking','ScoreController@ranking')->name('ranking')->middleware('auth');
 
+//cheking
+Route::get('checking/{id}','TravelerController@checking')->name('checking')->middleware('auth');
 

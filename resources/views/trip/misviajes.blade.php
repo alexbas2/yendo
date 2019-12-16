@@ -80,11 +80,11 @@
                                             <div class="col offset-3">
                                                 <a href="{{route('trip.solicitado',$viaje->trip->id)}}" class="btn btn-primary">VER</a>
                                             </div>
+                                            @if($viaje->me_subi == '0')
                                             <div class="col offset-3"><br>
-                                                <a href="" class="btn btn-primary">Hacer Cheking</a>
-                                            </div>
-                                            
-                                            
+                                            <a href="{{route('checking',$viaje->id)}}" class="btn btn-primary">Hacer checking </a>
+                                            </div>   
+                                            @endif
 
                                         @endif
                                         </div>
