@@ -47,3 +47,7 @@ Route::post('store','MessageController@store')->name('mensaje.store')->middlewar
 //puntuacion
 Route::get('votar/{id}','ScoreController@show')->name('votar')->middleware('auth');
 
+//ranking
+Route::get('ranking','ScoreController@ranking')->name('ranking')->middleware('auth');
+
+

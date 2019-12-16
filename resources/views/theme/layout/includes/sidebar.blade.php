@@ -9,8 +9,7 @@
         <li class="sidebar-list-item"><a href="{{route('trip.misviajes')}}" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Mis viajes</span></a></li>
         <li class="sidebar-list-item"><a href="{{route('trip.create')}}" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Crear Viaje</span></a></li>
         <li class="sidebar-list-item"><a href="{{route('buscar')}}" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>Buscar y Solicitar Viaje</span></a></li>
-
-        
+        <li class="sidebar-list-item"><a href="{{route('ranking')}}" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>Mejores Usuarios</span></a></li>
         <li class="sidebar-list-item"><a href="{{route('trip.anuncio')}}" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Publicar Anuncio</span></a></li>
 
 

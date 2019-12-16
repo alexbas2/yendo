@@ -71,7 +71,7 @@
                                             <div class="col offset-3">
                                                 <a href="{{route('votar',$viaje->id)}}" class="btn btn-primary">Votar</a>
                                             </div>
-                                            @else
+                                        @else
                                             <div class="col-md-12">
                                                 <div class="alert alert-success" role="alert">
                                                     <p class="text-center mt-1"><strong class="h6 text-uppercase mb-0">{{$viaje->trip->estado}}</strong></p>
@@ -80,6 +80,11 @@
                                             <div class="col offset-3">
                                                 <a href="{{route('trip.solicitado',$viaje->trip->id)}}" class="btn btn-primary">VER</a>
                                             </div>
+                                            <div class="col offset-3"><br>
+                                                <a href="" class="btn btn-primary">Hacer Cheking</a>
+                                            </div>
+                                            
+                                            
 
                                         @endif
                                         </div>
@@ -157,11 +162,15 @@
                                                </div>
                                         </div>
                                         <div class="col offset-2">
+                                        
                                         <a href="{{route('finaliza',$viaje->id)}}" class="btn btn-primary">finalizar</a>
-                                          <br>
-                                          <div >
+                                          
+                                          <div ><br>
                                           <a href="{{route('trip.show',$viaje->id)}}" class="btn btn-primary">Ver Detalles</a>
                                            </div>
+                                           <div><br>
+                                                <a href="" class="btn btn-primary">Solicitar cheking</a>
+                                            </div>
                                         </div>
                                         
                                          @endif

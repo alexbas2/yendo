@@ -25,18 +25,19 @@ class ScoreController extends Controller
         $score->save();
         return back()->with("mensaje", 'Se cargo correctamente la puntuación');;
     }
-
-    public function ranking(){
-        $usuarios = \DB::table('scores')->select('user_to_id','votos','comentario')
-                     ->orderBy('votos','desc')
-                    ->get();
-        return view('trip.ranking',compact('usuarios'));
-    }
-
-
     public function show(Trip $id){
         $viaje = Trip::where('id','=',$id);
         return view('trip.votar',['viaje'=>$viaje]);
     }
+
+    public function ranking(){
+        $viaje = \DB::table('scores')
+        ->select('user_to_id','votos','comentario')
+        ->orderBy('votos','desc')
+       ->get();
+        return view('trip.ranking',['viaje'=>$viaje]);
+    }
+
+
 
 }

@@ -23,18 +23,12 @@ export default {
           zoomControl: false, // para ver el simbolo + - 
           streetViewControl: false //para habilitar street view
         });
-      return map ;
-    },
-  methods:{
-     getAddressData: function (addressData, placeResultData, id) {
-                this.address = addressData;
-                this.$emit('direccion',this.address);
-        var map= this.initMap();
+
          var directionsService = new google.maps.DirectionsService;
          var directionsDisplay = new google.maps.DirectionsRenderer;
          directionsDisplay.setMap(map);
          directionsService.route({
-            origin: { lat:this.address.latitude, lng:this.address.longitude },//origen
+            origin: { lat:-38.9301499000000, lng:-68.0501499000000 },//origen
             destination: { lat:-38.94014990000001, lng:-68.0573579 },//fin            
             travelMode: google.maps.TravelMode.WALKING
          }, function (response, status) {
@@ -44,7 +38,7 @@ export default {
         });
     }
   }
-}
+
 </script>
 
 <style scoped>
