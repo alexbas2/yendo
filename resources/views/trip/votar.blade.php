@@ -1,19 +1,24 @@
 @extends('theme.layout.app')
 @section('content')
-    <div class="col-lg-10 mb-4 mb-lg-0">
+
+<div class="col-lg-10 mb-4 mb-lg-0">
         <div class="card">
             <div class="card-header">
-                <h2 class="h6 text-uppercase mb-0">{{$viaje->fechaViaje()}}</h2>
+            <h3>Valoracion del viaje</h3>
+            
+                <h2 class="h6 text-uppercase mb-0"></h2>
+                @if('proceso'=='proceso')
+                <h2 class="h6 text-success text-right text-uppercase mb-0"></h2>
+                @else
+                <h2 class="h6 text-danger text-right text-uppercase mb-0"></h2>
+                @endif
+        
             </div>
             <div class="card-body">
-                @if(session("mensaje"))
-                    <div class="alert alert-success" role="alert">
-                        {{session('mensaje')}}
-                    </div>
-                @endif
-                <h4 class="text-center">fecha {{$viaje->fecha}}</h4>
-                <h4 class="text-center">{{$viaje->hora}}</h4>
-                <h4 class="text-center">{{$viaje->calle}} {{$viaje->numero}}</h4>
+                
+                <h4 class="text-center">fecha </h4>
+                <h4 class="text-center">hora</h4>
+                <h4 class="text-center">calle numero</h4>
                 <h3 class="text-center">Creador del viaje</h3>
                 <br>
                 <div class="row">
@@ -56,13 +61,10 @@
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    @include('messages.content',['viaje'=>$viaje])
                 </div>
                 <form class="container" action="{{route('mensaje.store')}}" method="post">
-                    <input type="hidden" name="conversation_id" value="{{($viaje->conversation!=null)?$viaje->conversation->id:null}}">
-                    @if($viaje->conversation==null)
-                      <input type="hidden" name="trip_id" value="{{$viaje->id}}">
-                    @endif
+                    <input type="hidden" name="conversation_id" value="">
+                    
                     @csrf
                  <div class="form-group">
                     <div class="input-field col s12">
@@ -90,7 +92,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('scripts')
     <script>

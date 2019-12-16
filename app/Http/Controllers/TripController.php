@@ -43,6 +43,14 @@ class TripController extends Controller
      public function show(Trip $trip){
         return view('trip.show',['viaje'=>$trip]);
     }
+
+    
+    public function solicitado(Trip $trip){
+        return view('trip.solicitado',['viaje'=>$trip]);
+    }
+
+
+
     public function info(Trip $trip){
         return view('trip.info',['viaje'=>$trip]);
     }
@@ -52,7 +60,7 @@ class TripController extends Controller
             if($request->tipo_viaje=='pasajero'){
                 $misViajes=auth()->user()->viajes;
             }else{
-                $misViajes=auth()->user()->trips;
+                $misViajes=Trip::where('user_id','=',auth()->user()->id)->get();
             }
         }else{
             $misViajes=auth()->user()->viajes;
@@ -69,14 +77,15 @@ class TripController extends Controller
         return view('trip.index',['viajes'=>$viajes]);
     }
     
-    public function finalizar(Request $request){
-        $trip=Trip::
-        where('id','=',$request->id)
-        ->update(
-            ['estado' => 'finalizado']
-        );
-        return view('trip.misviajes',['viajes'=>$trip,'tipo_viaje'=>'chofer']); 
-    }
+    public function finaliza($id){
+        //Trip::where('id','=',$request->id)->update(['estado' => 'finalizado']);
+        
+        $request=\App\Trip::findOrFail($id);
+        $request->estado='finalizado';
+        $request->save();
+        
+        return back()->with("mensaje", 'Se envío correctamente el mensaje');
+    } 
 
 
     public function update(){

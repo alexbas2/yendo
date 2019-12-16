@@ -22,11 +22,13 @@
         <div class="row">
         @if($tipo_viaje=='pasajero')
                 @forelse($viajes as $viaje)
+                
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-md-9">
+                                        
                                             <h3 class="h6 text-uppercase mb-0">{{$viaje->trip->user->apellido}} {{$viaje->trip->user->nombre}}</h3>
                                         </div>
                                         <div class="col-md-3">
@@ -56,16 +58,30 @@
                                         <br>
                                         <br>
                                         <div class="row">
+                                       
+                                        </div> 
+                                        <div class="row">
+                                        @if( $viaje->trip->estado=='finalizado')
                                         <div class="col-md-12">
+                                                <div class="alert alert-danger" role="alert">
+                                                    <p class="text-center mt-1"><strong class="h6 text-uppercase mb-0">{{$viaje->trip->estado}}</strong></p>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col offset-3">
+                                                <a href="{{route('votar',$viaje->id)}}" class="btn btn-primary">Votar</a>
+                                            </div>
+                                            @else
+                                            <div class="col-md-12">
                                                 <div class="alert alert-success" role="alert">
                                                     <p class="text-center mt-1"><strong class="h6 text-uppercase mb-0">{{$viaje->trip->estado}}</strong></p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col offset-3">
-                                                <a href="{{route('trip.show',$viaje->id)}}" class="btn btn-primary">VER</a>
+                                                <a href="{{route('trip.solicitado',$viaje->trip->id)}}" class="btn btn-primary">VER</a>
                                             </div>
+
+                                        @endif
                                         </div>
                                     </div>
                                     <div class="chart-holder"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
@@ -82,13 +98,14 @@
             @endforelse
             @else
             @if($tipo_viaje=='chofer')
-                @forelse($viajes as $viaje)
+                @forelse($viajes as $viaje)                                    
                         <div class="col-md-4">
                         <br>
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-md-9">
+                                        
                                             <h4 class="h6 text-uppercase mb-0">Creador:</h4> 
                                             <h3 class="h6 text-uppercase mb-0">{{$viaje->user->apellido}} {{$viaje->user->nombre}}</h3>
                                         </div>
@@ -98,6 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                
                                 <h4 class="text-black text-center">{{$viaje->fechaViaje()}}</h4>
                                     <h4 class="text-black text-center">{{$viaje->hora}}hs</h4>
                                     <h6 class="text-black text-center">Ciudad: {{$viaje->ciudad}}</h6>
@@ -115,6 +133,7 @@
                                                    @endforelse
                                                 </div>
                                             </div>
+
                                         </div>
                                         <br>
                                         <br>
@@ -131,17 +150,20 @@
                                         </div>
 
                                         @else
+                                        
                                         <div class="col-md-12">
                                                 <div class="alert alert-primary" role="alert">
                                                 <p class="text-center mt-1"><strong class="h6 text-uppercase mb-0">{{$viaje->estado}}</strong></p>
                                                </div>
                                         </div>
                                         <div class="col offset-2">
-                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Finalizar</button>
+                                        <a href="{{route('finaliza',$viaje->id)}}" class="btn btn-primary">finalizar</a>
+                                          <br>
                                           <div >
                                           <a href="{{route('trip.show',$viaje->id)}}" class="btn btn-primary">Ver Detalles</a>
                                            </div>
                                         </div>
+                                        
                                          @endif
                                         </div>
                                         <br>
@@ -150,12 +172,21 @@
                                 </div>
                             </div>
                         </div>
+         
                 @empty
                     <div class="alert alert-warning" role="alert">
                         No hay viajes disponibles
                     </div>
                     @endif
+
+
                 @endforelse
             @endif
+
+
+
+
+
+
 
 @endsection

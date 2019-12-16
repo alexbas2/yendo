@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ 'unco.yendo') }}</title>
+    <title> unco.yendo </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,12 +20,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{'Unco.yendo') }}
-                </a>
+          
+            <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="/home" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a><a href="/home" class="navbar-brand font-weight-bold text-uppercase text-base">Unco.Yendo</a>
+         </ul>
+    </nav>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -75,6 +76,19 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-left text-primary">
+                        <p class="mb-2 mb-md-0">Unco.Yendo &copy; 2019-2020</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
     </div>
+  
 </body>
+
+
 </html>

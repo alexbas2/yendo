@@ -26,9 +26,9 @@ Route::get('trip/{trip}','TripController@show')->name('trip.show')->middleware('
 Route::get('buscar','TripController@buscar')->name('buscar')->middleware('auth');
 
 Route::get('ad/anuncio','AdController@anuncio')->name('trip.anuncio');
+Route::get('solicitado/{trip}','TripController@solicitado')->name('trip.solicitado')->middleware('auth');
 
-
-//Route::get('/misviajes/{id}','TripController@finalizar')->name('trip.finalizar')->middleware('auth');
+Route::get('finaliza/{id}','TripController@finaliza')->name('finaliza')->middleware('auth');
 
 //peticiones
 Route::post('/peticion/store','RequestController@store')->name('peticion.store')->middleware('auth');
@@ -45,5 +45,5 @@ Route::post('store','MessageController@store')->name('mensaje.store')->middlewar
 
 
 //puntuacion
-Route::get('votar/{id}','ScoreController@index')->name('votar')->middleware('auth');
+Route::get('votar/{id}','ScoreController@show')->name('votar')->middleware('auth');
 

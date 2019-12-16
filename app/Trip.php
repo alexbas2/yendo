@@ -20,6 +20,7 @@ class Trip extends Model
          'longitud',
          'estado',
           ];
+          
     const FINALIZADO='finalizado';
     const PROCESO='proceso';
 

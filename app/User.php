@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Traveler;
 use App\Trip;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,7 +41,9 @@ class User extends Authenticatable implements MustVerifyEmail
     //si el usuario ya le envio peticion a un viaje
     public function yaEnviePeticion(Trip $trip){
         $yaEnviePeticion=false;
-        $request=Request::where('trip_id','=',$trip->id)->where('user_id','=',auth()->user()->id)->first();
+        $request=Request::where('trip_id','=',$trip->id)
+        ->where('user_id','=',auth()->user()->id)
+        ->first();
 
         if($request==null){
             $yaEnviePeticion=false;
@@ -49,6 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $yaEnviePeticion;
     }
+
 
     public function messages(){
         return $this->belongsToMany(Message::class);

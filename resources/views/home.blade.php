@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Unco.Yendo</div>
 
@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                   Este es el home
+        <div class="col-12 col-lg-12 mx-auto mb-12 mb-lg-0">
+            <div class="pr-lg-5"><img src="{{asset('theme/img/home.jpg')}}" alt="home" class="img-fluid"></div>
+        </div>
                 </div>
             </div>
         </div>

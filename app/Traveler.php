@@ -17,7 +17,7 @@ class Traveler extends Model
     //cuando se dan de baja
     const CANCELADO='cancelado';
     const ARRIBA='arriba';
-    protected $fillable=['trip_id','user_id','me_subi','checking_id'];
+    protected $fillable=['trip_id','user_id','me_subi','checking_id','estado'];
 
     public function trip(){
         return $this->belongsTo(Trip::class);

@@ -20,7 +20,8 @@ class CreateRequestsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             //si el dueño acepta la solicitud se pone en true
-            $table->boolean('aceptado')->default(false);
+            $table->string('aceptado')->default('no');
+           // $table->boolean('aceptado')->default(false);
             //$table->unsignedBigInteger('trip_status_id');
             //$table->foreign('trip_status_id')->references('id')->on('trip_statuses');
 

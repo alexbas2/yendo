@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Score;
 use App\User;
 use App\Trip;
+use App\Traveler;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 
@@ -30,6 +31,12 @@ class ScoreController extends Controller
                      ->orderBy('votos','desc')
                     ->get();
         return view('trip.ranking',compact('usuarios'));
+    }
+
+
+    public function show(Trip $id){
+        $viaje = Trip::where('id','=',$id);
+        return view('trip.votar',['viaje'=>$viaje]);
     }
 
 }
