@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
             <h3>Valoracion del viaje</h3>
-            
+               
                 <h2 class="h6 text-uppercase mb-0"></h2>
                 @if('proceso'=='proceso')
                 <h2 class="h6 text-success text-right text-uppercase mb-0"></h2>

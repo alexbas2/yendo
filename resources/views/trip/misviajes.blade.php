@@ -169,7 +169,7 @@
                                           <a href="{{route('trip.show',$viaje->id)}}" class="btn btn-primary">Ver Detalles</a>
                                            </div>
                                            <div><br>
-                                                <a href="" class="btn btn-primary">Solicitar cheking</a>
+                                                <a href="{{route('finaliza',$viaje->id)}}" class="btn btn-primary">Solicitar cheking</a>
                                             </div>
                                         </div>
                                         

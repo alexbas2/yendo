@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Checking;
 use App\Mail\RequestAccepted;
 use App\Traveler;
 use Illuminate\Http\Request;
@@ -36,4 +37,9 @@ class RequestController extends Controller
     public function aceptado(){
         return view('trip.confirmado');
     }
+
+ 
+
+
+
 }

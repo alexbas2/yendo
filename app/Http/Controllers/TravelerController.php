@@ -6,8 +6,59 @@ use Illuminate\Http\Request;
 
 class TravelerController extends Controller
 {
-    //
-    protected $fillable=['trip_id','user_id','checking_id','me_subi','estado'];
+    public function index($id)
+    {
+        $traveler=Traveler::where('trip_id','=',$id)->get();
+        return view('traveler.index',compact('traveler')); 
+    }
+    public function create()
+    {
+        return view('traveler.create');
+    }
+ 
+    public function show($id)
+    {
+        $traveler=Traveler::find($id);
+        return  view('traveler.show',compact('traveler'));
+    }
+    public function edit($id)
+    {
+        //
+        $traveler=Traveler::find($id);
+        return view('traveler.edit',compact('traveler'));
+    }
+    public function update(Request $request, $id)    {
+      $this->validate($request,
+      [ 'trip_id'=>'required',
+      'user_id'=>'required',
+      'checking_id'=>'required',
+      'me_subi'=>'required',
+      'estado'=>'required']);
+ 
+      Traveler::find($id)->update($request->all());
+      return redirect()->route('traveler.index')->with('success','Registro actualizado satisfactoriamente');
+
+  }
+  public function destroy($id)
+  {
+      //
+       Traveler::find($id)->delete();
+      return redirect()->route('traveler.index')->with('success','Registro eliminado satisfactoriamente');
+  }
+
+  public function store(Request $request)
+  {
+      $this->validate($request,  
+      [ 'trip_id'=>'required',
+      'user_id'=>'required',
+      'checking_id'=>'required',
+      'me_subi'=>'required',
+      'estado'=>'required']);
+      Traveler::create($request->all());
+      return redirect()->route('traveler.index')->with('success','Registro creado satisfactoriamente');
+  }
+
+
 
 
   public function checking($id){

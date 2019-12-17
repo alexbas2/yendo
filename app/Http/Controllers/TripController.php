@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Trip;
+use App\Traveler;
+use App\Mail\Votar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TripController extends Controller
 {
@@ -81,6 +84,12 @@ class TripController extends Controller
         $request=\App\Trip::findOrFail($id);
         $request->estado='finalizado';
         $request->save();
+        
+        if($request->save()){
+            $viajeros=Traveler::where('trip_id','=',$id)->get();
+            Mail::to($request->user->email)
+            ->send(new Votar($request));
+        }
         
         return back()->with("mensaje", 'Se Finalizo correctamente el viaje');
     } 

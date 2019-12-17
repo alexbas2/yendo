@@ -11,11 +11,50 @@ use Illuminate\Session\Store;
 class ScoreController extends Controller
 {
 
-    public function index(Trip $trip){
-        return view('trip.votar',['viaje'=>$trip]);
+    public function index()
+    {
+        //
+        $score=Score::orderBy('id','DESC')->paginate(3);
+        return view('Score.index',compact('score')); 
+    }
+    public function create()
+    {
+        //
+        return view('Score.create');
+    }
+ 
+    public function show($id)
+    {
+        $score=Score::find($id);
+        return  view('Score.show',compact('score'));
+    }
+    public function edit($id)
+    {
+        //
+        $Score=Score::find($id);
+        return view('Score.edit',compact('score'));
+    }
+    public function update(Request $request, $id)    {
+        //
+        $this->validate($request,
+        [ 'user_to_id'=>'required',
+        'user_from_id'=>'required',
+        'trip_id'=>'required',
+        'votos'=>'required',
+        'comentario'=>'required']);
+ 
+        Score::find($id)->update($request->all());
+        return redirect()->route('Score.index')->with('success','Registro actualizado satisfactoriamente');
+ 
+    }
+    public function destroy($id)
+    {
+        //
+         Score::find($id)->delete();
+        return redirect()->route('Score.index')->with('success','Registro eliminado satisfactoriamente');
     }
 
-    public function store(Request $request){
+    public function store1(Request $request){
         $score=new Score();
         $score->user_to_id=$request->user_to;
         $score->user_from_id=auth()->user()->id;
@@ -25,10 +64,19 @@ class ScoreController extends Controller
         $score->save();
         return back()->with("mensaje", 'Se cargo correctamente la puntuación');;
     }
-    public function show(Trip $id){
-        $viaje = Trip::where('id','=',$id);
-        return view('trip.votar',['viaje'=>$viaje]);
+    public function store(Request $request)
+    {
+        $score=new Score();
+        $score->user_to_id='1';
+        $score->user_from_id=auth()->user()->id;
+        $score->comentario='prueba';
+        $score->trip_id='1';
+        $score->votos='0';
+        $score->save();
+         return redirect()->route('trip.misviajes')->with('success','Registro actualizado satisfactoriamente');
+
     }
+
 
     public function ranking(){
         $viaje = \DB::table('scores')

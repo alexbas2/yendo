@@ -43,13 +43,10 @@ Route::get('misviajes','TripController@misViajes')->name('trip.misviajes')->midd
 //mensajes
 Route::post('store','MessageController@store')->name('mensaje.store')->middleware('auth');
 
-
-//puntuacion
-Route::get('votar/{id}','ScoreController@show')->name('votar')->middleware('auth');
-
 //ranking
 Route::get('ranking','ScoreController@ranking')->name('ranking')->middleware('auth');
 
-//cheking
-Route::get('checking/{id}','TravelerController@checking')->name('checking')->middleware('auth');
+//Score
+Route::get('traveler/{id}', 'TravelerController@index')->name('votar')->middleware('auth');
+Route::get('score', 'ScoreController@store')->name('score.create')->middleware('auth');
 
