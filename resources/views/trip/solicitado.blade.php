@@ -44,6 +44,7 @@
                 <h6 class="text-left">Participantes</h6>
                 <div class="col-lg-5 d-flex align-items-center flex-column flex-lg-row text-center text-md-left offset-4"><img src="{{asset('theme/img/avatar-1.jpg')}}" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
                 <h6 class="mb-0">{{$viaje->user->apellido}} {{$viaje->user->nombre}}  </h6>
+
                 </div> 
                 </div>
                 <br>

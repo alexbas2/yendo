@@ -50,3 +50,6 @@ Route::get('ranking','ScoreController@ranking')->name('ranking')->middleware('au
 Route::get('traveler/{id}', 'TravelerController@index')->name('votar')->middleware('auth');
 Route::get('score', 'ScoreController@store')->name('score.create')->middleware('auth');
 
+Route::get('checking/{id}', 'TravelerController@checking')->name('trip.checking')->middleware('auth');
+
+

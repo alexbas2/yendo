@@ -28,6 +28,10 @@ class RequestController extends Controller
                 'trip_id'=>$request->trip->id,
                 'user_id'=>$request->user->id,
             ]);
+            Traveler::create([
+                'trip_id'=>$request->trip->id,
+                'user_id'=>$request->trip->user_id,
+            ]);
             
         }
         //echo 'Solicitud de viaje aceptada';

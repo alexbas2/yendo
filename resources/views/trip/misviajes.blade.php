@@ -69,7 +69,7 @@
                                             </div>
                                         
                                             <div class="col offset-3">
-                                                <a href="{{route('votar',$viaje->id)}}" class="btn btn-primary">Votar</a>
+                                                <a href="{{route('votar',$viaje->trip->id)}}" class="btn btn-primary">Votar</a>
                                             </div>
                                         @else
                                             <div class="col-md-12">
@@ -82,10 +82,10 @@
                                             </div>
                                             @if($viaje->me_subi == '0')
                                             <div class="col offset-3"><br>
-                                            <a href="{{route('checking',$viaje->id)}}" class="btn btn-primary">Hacer checking </a>
+                                            <a href="{{route('trip.checking',$viaje->id)}}" class="btn btn-primary">Hacer checking </a>
                                             </div>   
                                             @endif
-
+  
                                         @endif
                                         </div>
                                     </div>

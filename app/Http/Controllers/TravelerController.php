@@ -8,7 +8,9 @@ class TravelerController extends Controller
 {
     public function index($id)
     {
-        $traveler=Traveler::where('trip_id','=',$id)->get();
+        $traveler=Traveler::where('trip_id','=',$id)
+        ->where('user_id','!=',auth()->user()->id)
+        ->get();
         return view('traveler.index',compact('traveler')); 
     }
     public function create()
